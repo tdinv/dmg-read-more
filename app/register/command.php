@@ -12,7 +12,6 @@
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-
 if (defined('WP_CLI') && WP_CLI) {
 
     /**
