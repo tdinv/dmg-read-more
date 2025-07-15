@@ -15,8 +15,8 @@ The command `wp dmg-read-more-search` is registered and once run will return pos
 ### Command Arguments
 Associated Arguments can be passed to the command to change the date range in which we want to return results for:
 
- - `--date-before="Y-m-d"` The before date accepts a Accepts `strtotime()` compatible string. If no argument is passed, it will default to todays date.
- - `--date-after="Y-m-d"` The before date accepts a Accepts `strtotime()` compatible string.
+ - `--date-before="Y-m-d"` The before date accepts a `strtotime()` compatible string. If no argument is passed, it will default to todays date.
+ - `--date-after="Y-m-d"` The before date accepts a `strtotime()` compatible string.
  - `--save-as-csv` This argument will flag that we want to save the results to a CSV, this is an added feature as it's nice to have!
 
 Enjoy!
