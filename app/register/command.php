@@ -43,11 +43,23 @@ if (defined('WP_CLI') && WP_CLI) {
             $datesOmmitted = true;
         }
 
+        $before_date_fallback = date('Y-m-d', current_time('timestamp')); // Todays date
+        $after_date_fallback = date('Y-m-d', strtotime('-30 days', current_time('timestamp'))); // 30 days ago
+
         // Lets determine what dates we need to use
         // Setup before date, will set to be today if no date is set just to keep the wp_query logic light
-        $before_date = isset($assoc_args['date-before']) ? $assoc_args['date-before'] : date('Y-m-d', current_time('timestamp'));
-        // Setup after date, if not set then it will be set to 30 days ago
-        $after_date = isset($assoc_args['date-after']) ? $assoc_args['date-after'] : date('Y-m-d', strtotime('-30 days', current_time('timestamp')));
+        $before_date = isset($assoc_args['date-before']) ? ($assoc_args['date-before'] != '' ? $assoc_args['date-before'] : $before_date_fallback) : $before_date_fallback;
+        // Setup after date, if not set then it will be set to 30 days ago, it also checks for if the argument is empty string
+        $after_date = isset($assoc_args['date-after']) ? ($assoc_args['date-after'] != '' ? $assoc_args['date-after'] : $after_date_fallback) : $after_date_fallback;
+
+        if( isset($assoc_args['date-before']) && $assoc_args['date-before'] == ''){
+            WP_CLI::warning('Before date argument was empty, fallbacks will be used for the date...');
+        }
+
+        if( isset($assoc_args['date-after']) && $assoc_args['date-after'] == ''){
+            WP_CLI::warning('Before date argument was empty, fallbacks will be used for the date...');
+        }
+
         // Pagination is needed as we will need to take into account multiple pages of thousands of results
         $pagination = 1;
 
