@@ -1,0 +1,26 @@
+<?php
+// This file is generated. Do not modify it manually.
+return array(
+	'build' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'dmg/read-more',
+		'version' => '0.1.0',
+		'title' => 'Anchor Link',
+		'category' => 'text',
+		'description' => 'Search for a post which will be added as an anchor link to the content',
+		'attributes' => array(
+			'postSelection' => array(
+				'type' => 'object'
+			)
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'textdomain' => 'dmg-read-more',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php'
+	)
+);
